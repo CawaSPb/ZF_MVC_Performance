@@ -1,0 +1,28 @@
+The project is not a ready to use solution, it's not robust, has several potential problems (including security problems), it's just an experiment.
+On the other hand, it indicates a direction which promises to be very useful in increasing ZF MVC applications performance.
+
+Installation.
+1. Install your own ZF application.
+
+2. Put files from this project into 'public' folder at the root of your project (you already have index.php and .htaccess files there).
+
+3. Modify .htaccess so it will use request_proxy.php instead of index.php
+
+4. Run _one_ copy of the connection_manager.php
+php connection_manager.php &
+
+5. Run one or more copies of processing.php
+php processing.php &
+php processing.php &
+php processing.php &
+php processing.php &
+
+6. test your application through the web browser.
+
+Requirements.
+1. PHP 5.3
+
+2. Application utilizes data/ipc folder, so it must be created within your application folders with sufficient access rights.
+
+3. processing.php file should be modified according to your application needs if necessary
+
