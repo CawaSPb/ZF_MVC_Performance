@@ -18,7 +18,7 @@ while (true) {
     // close connection
     unset($pool_connection);
 
-    printf("Pool process is available and wait for connections at '%s'\n", $ipc_path);
+    // printf("Pool process is available and wait for connections at '%s'\n", $ipc_path);
 
     // wait for client connection
     $client_connection = $client_listener->acceptConnection();
@@ -27,5 +27,5 @@ while (true) {
     // close connection
     unset($client_connection);
 
-    printf("Client request is received\n");
+    // printf("Client request is received\n");
 }

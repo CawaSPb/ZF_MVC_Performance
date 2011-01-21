@@ -53,6 +53,14 @@ while (true) {
             $$var_name = $value;
         }
 
+        $request = $application->getBootstrap()->getResource('FrontController')->getRequest();
+        if($request !== null) {
+            $request->setRequestUri()
+                    ->setBaseUrl()
+                    ->setBasePath()
+                    ->setPathInfo();
+        }
+
         ob_start();
         $application->run();
         $output = ob_get_contents()
@@ -64,6 +72,12 @@ while (true) {
 
         $client_connection->sendMessage(serialize($headers));
         $client_connection->sendMessage($output);
+//        $client_connection->sendMessage('<html><body><pre>' . var_export($global_vars, true) . '</pre></body></html>');
+
+
+        $response = $application->getBootstrap()->getResource('FrontController')->getResponse();
+        $response->clearHeaders();
+        $response->setBody('');
     } catch (Exception $e) {
         $client_connection->sendMessage(serialize(array()));
         $client_connection->sendMessage('<html><body><pre>' . $e->getMessage() . '</pre></body></html>');
